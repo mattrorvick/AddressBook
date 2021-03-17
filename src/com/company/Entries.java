@@ -9,6 +9,18 @@ public class Entries {
 
     public static void menu() {
 
+//        ArrayList<Integer> arrlist = new ArrayList<Integer>();
+//        arrlist.add(14);
+//        arrlist.add(7);
+//        arrlist.add(39);
+//        arrlist.add(40);
+//
+//        /* For Loop for iterating ArrayList */
+//        System.out.println("For Loop");
+//        for (int counter = 0; counter < arrlist.size(); counter++) {
+//            System.out.println(arrlist.get(counter));
+//        }
+
         AddressBook addressBook = new AddressBook();
 
         ArrayList<String> allEntries = new ArrayList<String>();
@@ -54,24 +66,39 @@ public class Entries {
                     System.out.println("1. Add, 2. Remove, 3. Search, 4. Print, 5. Delete, 6. Quit");
                     break;
                 case 2:
-                    System.out.println("Enter an entry's email to remove: ");
-                    String input = scanner.next();
+//                    System.out.print("Enter an entry's email to remove: ");
 
-                    for (String singleEntry : allEntries) {
-                        if (singleEntry.contains(input)) {
+                    System.out.print("Enter an entry's id number to remove: ");
 
-                            //delete single entry from all entries somehow.....
+                    int otherInput = scanner.nextInt();
 
+                    //consider a while loop instead?
+
+
+                    //allEntries.toArray().length
+                    for (int i = 0; i < allEntries.size(); i++) {
+//                        for (int j = 1 + allEntries.size(); j > allEntries.indexOf(j); j--) {
+//
+//                        }
+
+                        if (otherInput == i ) {
+                            System.out.println();
                             System.out.println("Deleted the following entry: ");
-
-                            // print out entry that was detected with specific email address
-                            System.out.println(singleEntry);
-
-                            //cannot remove from list if browsing it with a for:each loop
-                            // allEntries.remove(singleEntry);
+                            System.out.println(allEntries.remove(i));
+                            break;
                         }
-                        else
-                            System.out.println("Email doesn't exist in address book.");
+//                        if (input.contains("@")) {
+//
+//                            System.out.println();
+//                            System.out.println("Deleted the following entry: ");
+//                            System.out.println(allEntries.remove(i));
+//                        }
+//                        else {
+//                            System.out.println("*************************************");
+////                            System.out.println("Email address not found.");
+//
+//                        }
+
                     }
 
                     System.out.println("*************************************");
@@ -79,23 +106,60 @@ public class Entries {
                     System.out.println("1. Add, 2. Remove, 3. Search, 4. Print, 5. Delete, 6. Quit");
                     break;
                 case 3:
+//                    System.out.println("1. First Name");
+//                    System.out.println("2. Last Name");
+//                    System.out.println("3. Phone Number");
+//                    System.out.println("4. Email Address");
+//                    System.out.println();
+                    System.out.print("Search by id number: ");
+                    otherInput = scanner.nextInt();
+                    for (int i = 0; i < allEntries.size(); i++) {
+
+                        if (otherInput == i ) {
+                            System.out.println();
+                            System.out.println("Search results for : " + i);
+                            System.out.println(allEntries.get(i));
+                            break;
+                        }
+//                        else
+//                            System.out.println("Not found.");;
+                    }
+                    System.out.println("*************************************");
+                    System.out.println();
+                    System.out.println("1. Add, 2. Remove, 3. Search, 4. Print, 5. Delete, 6. Quit");
                     break;
                 case 4:
-//                    System.out.println(addressBook.toString());
-                    System.out.println(allEntries.toString());
+                    //either or methods work below...
+
+//                    System.out.println(allEntries.toString());
+                    for (int i = 0; i < allEntries.size(); i++) {
+
+                        System.out.println(allEntries.get(i));
+                        System.out.println(i);
+                    }
                     System.out.println("*************************************");
                     System.out.println();
                     System.out.println("1. Add, 2. Remove, 3. Search, 4. Print, 5. Delete, 6. Quit");
                     break;
                 case 5:
                     System.out.println("Are you sure you'd like to clear your address book? Type Y for yes or N for no.");
-                    scanner.next();
-                    if (scanner.equals('Y'))
-                        System.out.println("Address book cleared!");
-                        //code to clear address book.
-                    else
+                    String input = scanner.next();
+                    if (input.equals("Y")) {
+                        allEntries.clear();
                         System.out.println("*************************************");
-                    break;
+                        System.out.println("Address book cleared!");
+                        System.out.println("*************************************");
+                        System.out.println();
+                        System.out.println("1. Add, 2. Remove, 3. Search, 4. Print, 5. Delete, 6. Quit");
+                        break;
+                    }
+                    else {
+                        System.out.println("*************************************");
+                        System.out.println("Okay, choose another option.");
+                        System.out.println("*************************************");
+                        System.out.println("1. Add, 2. Remove, 3. Search, 4. Print, 5. Delete, 6. Quit");
+                        break;
+                    }
                 case 6:
                     System.out.println("You have quit the program.");
                     scanner.close();
